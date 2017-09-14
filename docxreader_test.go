@@ -25,20 +25,22 @@ func TestRead(t *testing.T) {
 	// for _, v := range tSlice {
 	// fmt.Println("text is ", v)
 	// }
-	replaceMap := map[string]string{"hello": "你好", "good": "很好", "<test></test>": "test replacement"}
-	err = doc.DocumentReplace("word/document.xml", replaceMap)
-	if err != nil {
-		fmt.Println("Replace err", err)
-	}
-	err = doc.Save("test/test2.docx")
-	if err != nil {
-		fmt.Println("save err", err)
-	}
+	// replaceMap := map[string]string{"hello": "你好", "good": "很好", "<test></test>": "test replacement"}
+	// err = doc.DocumentReplace("word/document.xml", replaceMap)
+	// if err != nil {
+	// fmt.Println("Replace err", err)
+	// }
+	// err = doc.Save("test/test2.docx")
+	// if err != nil {
+	// fmt.Println("save err", err)
+	// }
 	//--------
-	l, err := doc.ListWording()
+	err = doc.GetWording()
 	if err != nil {
 		fmt.Println("list word err", err)
 	}
-	fmt.Println(l)
+	for _, item := range doc.WordsList {
+		fmt.Println(item.Pid, len(item.Content), item.Content)
+	}
 
 }
